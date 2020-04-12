@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+import requests
 import bs4
 from bs4 import BeautifulSoup
 from selenium.common.exceptions import *
@@ -23,12 +24,8 @@ Get the total entries of each categories in each year.
 def get_arxiv_total_entries(year, category):
     y = int(str(year)[-2:])
     origin_url = r"https://arxiv.org/list/{}/{}?skip=0".format(category, y)
-    driver_path = r"C:\Users\YangWang\Desktop\machineLearning\indiaNewsClassification\chromedriver.exe"
-    driver = webdriver.Chrome(driver_path)
-    time.sleep(2)
-    driver.get(origin_url)
-    time.sleep(5)
-    soup = BeautifulSoup(driver.page_source, "html.parser")
+    r = requests.get(origin_url)
+    soup = BeautifulSoup(r.text, "html.parser")
     text = soup.find(name="div", attrs={"id": "dlpage"})
     total_entries = text.find(name="small")
     total_entries = int(total_entries.contents[0].split()[3])
