@@ -95,9 +95,10 @@ def dataframe_preprocessing(paper_list):
     df["link"] = df["link"].map(lambda x: "https://arxiv.org" + x if x is not None else None)
     df["year"] = df["year"].map(int)
     df["category"] = df["category"].map(str)
-```
-    return df
     
+    return df
+```
+
 ### Extract certain category of the research area
 Conduct a `get_arxiv_dataframe` function to get the certain category of research area. (computer science, mathematics, statistics, electrical engineering and systems science, and quantitative finance)
 
