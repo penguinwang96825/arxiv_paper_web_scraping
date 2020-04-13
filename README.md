@@ -22,8 +22,7 @@ Get the total entries of each categories in each year.
 
 ```python
 def get_arxiv_total_entries(year, category):
-    y = int(str(year)[-2:])
-    origin_url = r"https://arxiv.org/list/{}/{}?skip=0".format(category, y)
+    origin_url = r"https://arxiv.org/list/{}/{}?skip=0".format(category, int(str(year)[-2:]))
     headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'}
     r = requests.get(origin_url, headers=headers)
     soup = BeautifulSoup(r.text, "html.parser")
