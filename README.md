@@ -34,7 +34,7 @@ def get_arxiv_total_entries(year, category):
 ```
 
 ### Get the arxiv paper list
-It can show at most 2000 papers in one page. Therefore, I have to make a "for" loop to change to the next page until all papers of each category have been appended into a lost.
+It can show at most 2000 papers in one page. Therefore, I have to make a `for` loop to change to the next page until all papers of each category have been appended into a lost.
 
 ```python
 def get_arxiv_paper_list(total_entries, year, category):
